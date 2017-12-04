@@ -11,7 +11,12 @@ app.set('view engine', 'ejs')
 const events = new EventEmitter()
 
 app.get('/', (req, res) => {
-  const channel = crypto.randomBytes(12).toString('base64')
+  const channel = crypto
+    .randomBytes(12)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '~')
   res.redirect(channel)
 })
 
