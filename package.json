@@ -1,0 +1,21 @@
+{
+  "name": "webhook-proxy-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "standard"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-sse": "^1.2.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "sse": "0.0.6"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}

@@ -1,0 +1,11 @@
+<h1>Webhook Proxy</h1>
+
+<code><%= token %></code>
+
+<script>
+  const es = new EventSource(<%- JSON.stringify(token + "/events") %>)
+  es.onmessage = (msg) => {
+    console.log(msg.data)
+  }
+  console.log(es)
+</script>
