@@ -1,11 +1,31 @@
 <h1>Webhook Proxy</h1>
 
-<code><%= token %></code>
+<ol>
+  <li>Use <code><%= url %></code> as your <strong>Webhook URL</strong></li>
+  <li><p>Connect to <%= url %> with a client that supports <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server-Sent Events</a><p>
+
+<p>Such as a browser:</p>
+
+<pre>
+const events = new EventSource(<%- JSON.stringify(url) %>)
+events.onmessage = (msg) => {
+  console.log(msg.data)
+}
+</pre>
+
+<p>or Curl:</p>
+
+<pre>
+curl -i -H 'Accept: text/event-stream' <%= url %>
+</pre>
+
+
+</li>
+</ol>
 
 <script>
-  const es = new EventSource(<%- JSON.stringify(token + "/events") %>)
-  es.onmessage = (msg) => {
+  const events = new EventSource(<%- JSON.stringify(url) %>)
+  events.onmessage = (msg) => {
     console.log(msg.data)
   }
-  console.log(es)
 </script>
